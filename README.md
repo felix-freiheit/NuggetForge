@@ -30,15 +30,23 @@ Building Nugget on MacOS often fails due to:
 
 ## Installation & Usage
 
-1️⃣ Download `NuggetForge_v1_4.sh` from this repository.
+1️⃣ Download The Nugget Main repository, if it is a _.zip_ file you might have to decompress it.
 
-2️⃣ Make the script executable:
+2️⃣ Download NuggetForge to the same folder. 
+
+3️⃣ Open the Terminal on your computer.
+
+4️⃣ In the Terminal, in order to navigate to said folder (in this case Downloads).
+
+```bash
+cd ~/Downloads
+```
+5️⃣ Make NuggetForge executable.
 
 ```bash
 chmod +x NuggetForge_v1_4.sh
 ```
-
-3️⃣ Run the installer:
+6️⃣ Run the installer:
 
 ```bash
 ./NuggetForge_v1_4.sh
