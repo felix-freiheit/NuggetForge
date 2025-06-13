@@ -1,5 +1,5 @@
 
-# NuggetForge v1.4 🚀
+# NuggetForge v1.5 🚀
 
 **Fully Automated MacOS Builder for Nugget**
 
@@ -44,12 +44,12 @@ cd ~/Downloads
 5️⃣ Make NuggetForge executable.
 
 ```bash
-chmod +x NuggetForge_v1_4.sh
+chmod +x NuggetForge_v1_5.sh
 ```
 6️⃣ Run the installer:
 
 ```bash
-./NuggetForge_v1_4.sh
+./NuggetForge_v1_5.sh
 ```
 
 ---
