@@ -58,12 +58,13 @@ fi
 # Virtual Environment
 
 echo -e "${YELLOW}Creating virtual environment...${RESET}"
-$PYTHON_PATH -m venv nuggetforge_env
-if [ ! -d "nuggetforge_env" ]; then
+VENV_PATH=~/Downloads/nuggetforge_env
+$PYTHON_PATH -m venv "$VENV_PATH"
+if [ ! -d "$VENV_PATH" ]; then
   echo -e "${RED}❌ Failed to create virtual environment.${RESET}"
   exit 1
 fi
-source nuggetforge_env/bin/activate
+source "$VENV_PATH/bin/activate"
 
 # Pip Upgrade
 
@@ -84,6 +85,11 @@ TOTAL_STEPS=6
 STEP=0
 for dep in pyside6 pymobiledevice3 pyinstaller opencv-python ffmpeg-python; do
   pip install $dep &> /dev/null
+  if [ $? -ne 0 ]; then
+    echo -e "\n${RED}❌ Failed to install $dep.${RESET}"
+    deactivate
+    exit 1
+  fi
   ((STEP++))
   progress_bar $STEP $TOTAL_STEPS
   sleep 0.1
@@ -125,11 +131,12 @@ while kill -0 $PID 2>/dev/null; do
   sleep 0.15
 done
 wait $PID
+BUILD_EXIT=$?
 progress_bar $TOTAL_BUILD $TOTAL_BUILD
 
-if [ $? -eq 0 ]; then
+if [ $BUILD_EXIT -eq 0 ]; then
   echo -e "\n${GREEN}✅ Build completed successfully!${RESET}"
-  echo -e "${YELLOW}Output: downloads/Nugget-main/dist/NuggetApp.app${RESET}"
+  echo -e "${YELLOW}Output: $SEARCH_DIR/dist/NuggetApp.app${RESET}"
 else
   echo -e "${RED}❌ Build failed. See buildlog.txt for details.${RESET}"
   deactivate
